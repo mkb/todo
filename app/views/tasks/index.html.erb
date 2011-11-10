@@ -45,7 +45,7 @@
 			 		<li> 
 					    <%= f.input :done ,   :input_html => { :class => 'box'  } , :label => false  %>
 					    <%= f.button :submit ,  :class => 'hidden'   %>
-					    <%= auto_link( h(task.name) ) %>
+					    <%= raw auto_link( h(task.name), :html => { :target => '_blank' }) %>
 					    <p class="delete-task">
 					        <%= link_to 'X', list_task_url(list, task), :confirm => 'Are you sure?', :method => :delete %>
 					    </p>
@@ -58,13 +58,13 @@
 		<% end %>
 		
 		<% unless list.done_tasks.empty? %>	
-    		<ul class="tasks finished-tasks">
-    		    <% list.done_tasks.each do |task| %>
-        		<li class="finished">
-        		    <%= auto_link( h(task.name) ) %>
-        		    <p class="delete-task">
+		<ul class="tasks finished-tasks">
+		    <% list.done_tasks.each do |task| %>
+			<li class="finished">
+			    <%= raw auto_link( h(task.name), :html => { :target => '_blank' }) %>
+			    <p class="delete-task">
 			        <%= link_to 'X', list_task_url(list, task), :confirm => 'Are you sure?', :method => :delete %>
-    			    </p>
+			    </p>
         		</li>
         		<% end %>
     		</ul>
